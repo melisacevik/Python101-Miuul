@@ -266,9 +266,12 @@ for salary in salaries:
 
 def alternating(string):
     new_string =""
+                        # stringin indexlerinde gezme => range()
     for string_index in range(len(string)):
+        #index çift ise büyük harfe çevir
         if string_index % 2 == 0:
             new_string += string[string_index].upper()
+        # index tek ise küçük harfe çevir
         else:
             new_string += string[string_index].lower()
     print(new_string)
