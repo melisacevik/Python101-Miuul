@@ -155,3 +155,54 @@ def add_element(a,b):
     list_store.append(c)
     print(list_store)
 
+############################
+# KOŞULLAR (CONDITIONS)
+############################
+
+1 == 1
+1 == 2
+
+#####################
+#if
+#####################
+
+if 1 == 1:
+    print("smth")
+
+number = 11
+
+if number == 10:
+    print("number is 10")
+
+def number_check(number):
+    if number == 10:
+        print("number is 10")
+
+number_check(12)
+
+#####################
+#else
+#####################
+
+def number_check(number):
+    if number == 10:
+        print("number is 10")
+    else:
+        print("print is not 10")
+
+number_check(12)
+
+#####################
+#elif
+#####################
+
+def number_check(number):
+    if number > 10:
+        print("number is greater than 10 ")
+    elif number < 10:
+        print("number is less than 10")
+    else:
+        print("invalid number")
+
+number_check(11)
+
