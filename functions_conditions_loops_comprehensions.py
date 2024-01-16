@@ -255,3 +255,22 @@ for salary in salaries:
 ## her bir maaş için 3000den büyük mü kontrol et, new_salary fonks. çalıştır
 ## er bir maaş için 3000den büyük değilse %20 zam yap.
 
+#############################
+# Alternating ( MÜLAKAT SORUSU )
+#############################
+
+# Amaç aşağıdaki string değiştiren fonksiyon yazmak istiyoruz.
+
+# before : "hi my name is john and i am learning python"
+# after : "Hi mY NaMe iS JoHn aNd i aM LeArNiNg pYtHoN"
+
+def alternating(string):
+    new_string =""
+    for string_index in range(len(string)):
+        if string_index % 2 == 0:
+            new_string += string[string_index].upper()
+        else:
+            new_string += string[string_index].lower()
+    print(new_string)
+
+alternating("hi my name is john and i am learning python")
