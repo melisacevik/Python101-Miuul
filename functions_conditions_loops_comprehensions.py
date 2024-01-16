@@ -206,3 +206,52 @@ def number_check(number):
 
 number_check(11)
 
+#####################
+# LOOPS (Döngüler)
+#####################
+#for loop
+
+students = ["portakal", "çitos", "osman", "süslü"]
+
+## her öğrenciyi gezmek için for i in students diyoruz
+for student in students:
+    print(student)
+
+## isimlerini büyütmek istersek
+
+for student in students:
+    print(student.upper())
+
+salaries = [ 1000, 2000, 3000, 4000, 5000]
+
+for salary in salaries:
+    print(salary)
+
+# herkese %20 zam
+
+for salary in salaries:
+    print(int(salary * (20/100) + salary))
+
+## maaşları %20 , %30, %50 olarak tek tek yazmam kendimi tekrar etmeme yol açar o yüzden fonksiyon yazıyorum.
+
+def new_salary(salary, rate):
+    return int(salary * rate/100 + salary)
+
+new_salary(1500,10)
+new_salary(2000,20)
+
+for salary in salaries:
+    print(new_salary(salary, 10))
+
+#maaşı 3000'den yukarısı olanlara farklı zam uygulasın
+
+for salary in salaries:
+    if salary >= 3000:
+        print(new_salary(salary,10))
+    else:
+        print(new_salary(salary,20))
+
+## maaşı tek tek gez
+## her bir maaş için 3000den büyük mü kontrol et, new_salary fonks. çalıştır
+## er bir maaş için 3000den büyük değilse %20 zam yap.
+
