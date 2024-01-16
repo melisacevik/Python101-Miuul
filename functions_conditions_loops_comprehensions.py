@@ -303,6 +303,33 @@ while number < 5:
     print(number)
     number += 1
 
+################
+# Enumerate : Otomatik Counter/Indexer ile for loop
+# Bir interatif nesne içinde elemanları gezip aynı zamanda index bilgisini de takip etmemizi sağlar.
+################
+
+## örnek => çift indexlileri A listesine , tek indexlileri B listesine alma
+
+students = ["portakal", "çitos", "osman", "süslü"]
+
+for student in students:
+    print(student)     #burada index bilgisini output olarak alamadık
+
+
+for index,student in enumerate(students):
+    print(index,student)  # burada index bilgisini de alabildik
+
+A = []
+B = []
+for index,student in enumerate(students):
+    if index % 2 == 0:
+        A.append(student)
+    else:
+        B.append(student)
+print(students)
+print(A)
+print(B)
+
 
 
 
