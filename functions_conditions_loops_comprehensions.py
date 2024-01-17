@@ -380,3 +380,58 @@ teams = ["Los Angeles Lakers","Chicago Bulls","Houston Rockets"]
 heights = [1.98 , 1.98, 2.11]
 
 list(zip(players,teams,heights))
+
+#################
+# Lambda & Map & Filter & Reduce
+#################
+
+#
+#Lambda => fonksiyon tanımlama şeklidir. atama yapılmaksızın kullanılabilir.
+#
+
+def summer(a,b):
+    return a + b
+
+new_summer = lambda a,b: a+b; # şu an kullan- at özelliğine bakmıyoruz nasıl tanımlanır diye öğrendik
+
+new_summer(4,5)
+
+#
+# Map => Döngü yazmaktan kurtarır.
+#
+
+salaries = [1000,2000,3000,4000]
+
+def new_salary(x):
+    return x * 20 / 100 + x   # lambda + map ile buna da ihtiyaç kalmadı.
+
+new_salary(1000)
+
+for salary in salaries:
+    print(new_salary(salary))    # bu uzun yol
+
+        #bu fonksiyonu, bu nesneye mapledi
+list(map(new_salary, salaries))  # bu kısa yol
+
+#
+# lambda - map ilişkisi
+#
+
+# del new_summer
+
+list(map(lambda x: x * 20 / 100 + x, salaries)) #en kısa yol
+
+############
+# Filter
+############
+
+list_store = [1,2,3,4,5,6,7,8,9] #çift varsa filtreleyip listeleyeceğiz.
+
+list(filter(lambda x: x % 2 == 0, list_store))
+
+############
+# Reduce : İndirgemek
+############
+from functools import reduce
+list_store = [1,2,3,4]
+reduce(lambda a,b: a+b, list_store) # peş peşe elemanları ekler
