@@ -354,4 +354,17 @@ st = divide_students(students)
 st[0]
 st[1]
 
+#################
+# Alternating Fonksiyonunun Enumerate ile Yazılması
+#################
 
+def alternating_with_enumerate(string):
+    new_string = ""
+    for i,letter in enumerate(string):
+        if i % 2 == 0:
+            new_string += letter.upper()
+        else:
+            new_string += letter.lower()
+    print(new_string)
+
+alternating_with_enumerate("hi mY naMe is MeliSa")
