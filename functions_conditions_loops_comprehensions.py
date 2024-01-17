@@ -368,3 +368,15 @@ def alternating_with_enumerate(string):
     print(new_string)
 
 alternating_with_enumerate("hi mY naMe is MeliSa")
+
+#################
+# Zip : Birbirinden farklı şekilde olan listeleri bir arada değerlendirme imkanı sağlar.
+#################
+
+players = ["Kobe Bryant" , "Michael Jordan" , "Alperen Şengün"]
+
+teams = ["Los Angeles Lakers","Chicago Bulls","Houston Rockets"]
+
+heights = [1.98 , 1.98, 2.11]
+
+list(zip(players,teams,heights))
