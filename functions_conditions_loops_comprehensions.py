@@ -517,3 +517,22 @@ dictionary.items()
 # aynı anda ikisini de yapabilirim;
 
 {k.upper(): v **2 for (k,v) in dictionary.items()}
+
+#
+# Dict Comprehensions - Mülakat Sorusu -
+#
+
+# Amaç : Çift sayıların karesi alınarak bir sözlüğe eklenmek istemektedir
+# Key'ler orijinal değerler, valuelar ise değiştirilmiş değerler olacak.
+
+numbers = range(10)
+
+new_dict = {}
+
+for n in numbers:
+    if n % 2 == 0:
+        new_dict[n] = n ** 2
+
+# dict ile de çözülür
+
+{n : n **2 for n in numbers if n % 2 == 0}
