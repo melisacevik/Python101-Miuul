@@ -442,7 +442,7 @@ reduce(lambda a,b: a+b, list_store) # peş peşe elemanları ekler
 ################
 
 #
-# List Comprehension : Bu yapı ile tek satırda, hem bir döngü, hem bir if else, hem de belirli bir fonksiyonu , döngü elemanlarına uygulama işlemi sağlar.
+# 1) List Comprehension : Bu yapı ile tek satırda, hem bir döngü, hem bir if else, hem de belirli bir fonksiyonu , döngü elemanlarına uygulama işlemi sağlar.
 #
 def new_salary(x):
     return x * 20 / 100 + x
@@ -492,3 +492,28 @@ students_no = ["John", "Vanessa"]
 #istemediğim öğrencilerin isimlerini küçük(student_no'dakiler istemediğim) , diğerlerini büyük yazsın.
 
 [student.lower() if student in students_no else student.upper() for student in students]
+
+#
+# Dict Comprehension
+#
+
+dictionary = {'a':1,
+              'b':2,
+              'c':3,
+              'd':4}
+
+dictionary.keys()
+dictionary.values()
+dictionary.items()
+
+# Örnek => her value'nun karesini almak istiyoruz.
+
+{k: v ** 2 for (k,v) in dictionary.items()}
+
+# key'leri büyütmek istersem;
+
+{k.upper(): v for (k,v) in dictionary.items()}
+
+# aynı anda ikisini de yapabilirim;
+
+{k.upper(): v **2 for (k,v) in dictionary.items()}
