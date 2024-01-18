@@ -536,3 +536,40 @@ for n in numbers:
 # dict ile de çözülür
 
 {n : n **2 for n in numbers if n % 2 == 0}
+
+#######################
+# List - Dict Comprehensions -Uygulama 1-
+#######################
+
+########
+# Bir Veri Setindeki Değişken İsimlerini Değiştirmek
+########
+
+#before:
+#['total', 'speeding', 'alcohol','not_distracted', 'no_previous','ins_premium', 'ins_losses', 'abbrev']
+
+#after:
+#['TOTAL', 'SPEEDING', 'ALCOHOL','NOT_DISTRACTED', 'NO_PREVIOUS','INS_PREMIUM', 'INS_LOSSES', 'ABBREV']
+
+# DataFrame(Veri Çerçevesi) Nedir ? Pandas modülünün, paketinin, kütüphanesinin bir veri yapısıdır.
+# Birbirinden farklı veri tiplerini tutma imkanı sağlar.
+# Excel tarzında veri tutmak şeklinde düşünülebilir.
+
+import seaborn as sns                  #import ettik
+df = sns.load_dataset("car_crashes")   #seaborn kütüphanesi içerisinden "car_crashes" veri setini getir ve df şeklinde kaydet.
+df.columns                             #ilgili dataframe'in değişkenlerinin ismi gelir
+
+A = []
+
+for col in df.columns:
+    print(A.append(col.upper()))
+
+df.columns = A
+
+# List comprehension ile çözümü
+
+df = sns.load_dataset("car_crashes")
+
+df.columns = [col.upper() for col in df.columns]
+
+
