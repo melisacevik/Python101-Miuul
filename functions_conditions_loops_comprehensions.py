@@ -609,3 +609,37 @@ df.columns = [col.upper() for col in df.columns]
 ["FLAG_" + col if "INS" in col else "NO_FLAG_" for col in df.columns] #INS olmayanlara NO_FLAG_ ekledik
 
 df.columns = ["FLAG_" + col if "INS" in col else "NO_FLAG_" for col in df.columns]
+
+
+#######################
+# List - Dict Comprehensions -Uygulama 3-
+#######################
+
+########
+# Amaç key'i string, value'su aşağıdaki gibi bir liste olan sözlük oluşturmak.
+# Sadece sayısal değişkenler için yapacağız. ( Sayısal değişkenleri seçeceğiz. )
+########
+
+# Output:
+# {'total' : ['mean,'min', 'max', 'var']
+#'speeding' : ['mean,'min', 'max', 'var']
+#'alcohol' : ['mean,'min', 'max', 'var']
+#'not_distracted' : ['mean,'min', 'max', 'var']
+#'no_previous' : ['mean,'min', 'max', 'var']
+#'ins_premium' : ['mean,'min', 'max', 'var']
+#'ins_loses' : ['mean,'min', 'max', 'var']
+# }
+
+import seaborn as sns
+df = sns.load_dataset("car_crashes")
+df.columns
+
+num_cols = [col for col in df.columns if df[col].dtype != 'O'] #obje olmayanları aldık
+soz = {}
+agg_list = ["mean","min","max","sum"]
+
+new_dict = {col: agg_list for col in num_cols}
+
+df[num_cols].head()
+
+df[num_cols].agg(new_dict)
