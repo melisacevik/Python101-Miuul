@@ -18,4 +18,22 @@ import seaborn as sns
 df = sns.load_dataset("car_crashes")
 df.columns
 
-[col + "_FLAG" if 'no' not in str(df[col]) else col for col in df.columns]
+[col.upper() + "_FLAG" if 'no' not in str(df[col]) else col.upper() for col in df.columns]
+
+
+#################
+# Görev 3) List Comprehension yapısı kullanarak aşağıda verilen değişken isimlerinden FARKLI olan
+# değişkenlerin isimlerini seçiniz ve yeni bir data frame oluşturun.
+#################
+
+import seaborn as sns
+df = sns.load_dataset("car_crashes")
+df.columns
+
+og_list = ["abbrev","no_previous"]
+new_cols = []
+
+new_cols = [col for col in df.columns if "abbrev" not in col and "no_previous" not in col]
+
+new_df = df[new_cols]
+

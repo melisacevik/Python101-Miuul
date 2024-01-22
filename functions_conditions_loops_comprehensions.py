@@ -643,3 +643,16 @@ new_dict = {col: agg_list for col in num_cols}
 df[num_cols].head()
 
 df[num_cols].agg(new_dict)
+
+##########
+# Recursive Fonksiyonlar : Çalışma esnasından tekrar kendini çağıran fonksiyonlara denir.
+##########
+
+def factorial(x):
+    if x == 1 or x == 0:
+        return 1                     # 1
+    else:
+        return x * factorial(x - 1)  # 4 ,3 ,2
+
+result = factorial(4)
+print(result)
