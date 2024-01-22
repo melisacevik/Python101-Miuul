@@ -439,6 +439,14 @@ list(map(new_salary, salaries))  # bu kısa yol
 
 list(map(lambda x: x * 20 / 100 + x, salaries)) #en kısa yol
 
+# Map - Proto : filter fonksiyonu ile benzer fakat map ile listenin içindeki elemanlara müdahale edebiliyoruz.
+
+liste = [10,8,7,5,3,2]
+
+yeni_liste = list(map(lambda x: x *2, liste))
+
+print(yeni_liste)
+
 ############
 # Filter
 ############
@@ -684,11 +692,13 @@ def factorial(x):
 result = factorial(4)
 print(result)
 
+##########
+# Proto # *args, **kwargs
+##########
 
-# Map : filter fonksiyonu ile benzer fakat map ile listenin içindeki elemanlara müdahale edebiliyoruz.
+def toplam(*args,**kwargs):
+    print(args)
+    print(kwargs)
 
-liste = [10,8,7,5,3,2]
+toplam(1,2,3,isim = 'Melisa', soyisim = 'Cevik')
 
-yeni_liste = list(map(lambda x: x *2, liste))
-
-print(yeni_liste)
