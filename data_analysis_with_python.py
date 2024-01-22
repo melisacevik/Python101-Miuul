@@ -146,3 +146,20 @@ m[1, :]
 # hem satırlardan belli bir aralık hem sütunlardan belli bir aralık verebilir miyiz?
 
 m[0:2, 0:3]
+
+##################
+# Fancy Index
+##################
+
+import numpy as np
+
+            #0'dan 30'a kadar 3'er artacak şekilde array oluşturma
+v = np.arange(0, 30, 3)
+v[1]
+
+# diyelim ki elimde birden fazla index bilgisi var. tek tek [0] , [5] gibi yazmaktan kolay olmalı.
+#fancy index ne işe yarar? numpy arrayine bir liste girdiğinizde seçim işlemi sağlar.
+
+catch = [1,2,3] # list
+v[catch] # numpy array
+
