@@ -77,3 +77,22 @@ a.ndim #tek boyutlu [] olduğu icin 1 | kaç boyutlu? 1 mi 2 mi 3 mü
 a.shape #tek boyutlu ve içinde 5 eleman var | boyut bilgisi ver
 a.size # toplam eleman sayısı
 a.dtype
+
+##################
+# Yeniden Şekillendirme - Reshaping
+##################
+
+# Numpy array’in boyutunu değiştirmek istediğimizde reshape( ) metodunu kullanırız.
+# örneğin , 3'e 3'lük matris oluşturmak istersek,
+
+import numpy as np
+np.random.randint(1, 10, size=9)
+np.random.randint(1, 10, size=9).reshape(3,3)
+
+#veya
+ar = np.random.randint(1, 10, size=9)
+ar.reshape(3,3)
+#atayarak da olur.
+#ihtiyaçlara göre daha az sayıda veya daha fazla sayıda satır ya da sütun bilgisi girerek boyut değiştirme işlemleri yapılır.
+
+#ama, 10 elemanlı olsaydı 3,3'e çeviremezdik. hata verir.
