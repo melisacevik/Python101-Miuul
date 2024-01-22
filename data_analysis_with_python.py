@@ -60,5 +60,20 @@ np.random.normal(10, 4,(3,4)) #(normaldağılımlıkitleortalaması, argüman=> 
 # 3 satır 4 sütundan oluşan ortalaması 10 standart sapması 4 olacak şekilde normal dağılımlı sayılar oluşturuldu.
 
 
+##################
+# NumPy Array Özellikleri ( Attributes of NumPy Arrays )
+##################
 
+import numpy as np
 
+# ndim : boyut sayısı
+# shape : boyut bilgisi
+# size : toplam eleman sayısı
+# dtype : array veri tipi
+
+a = np.random.randint(10, size=5)
+
+a.ndim #tek boyutlu [] olduğu icin 1 | kaç boyutlu? 1 mi 2 mi 3 mü
+a.shape #tek boyutlu ve içinde 5 eleman var | boyut bilgisi ver
+a.size # toplam eleman sayısı
+a.dtype
