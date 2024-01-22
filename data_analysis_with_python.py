@@ -18,7 +18,7 @@
 # Index Seçimi
 # Slicing
 # Fancy Index
-# NumPy'da Koşullu İşlemler
+# NumPy'da Koşullu İşlemler Conditions on NumPy
 # Matematiksel İşlemler
 
 ##################
@@ -162,4 +162,34 @@ v[1]
 
 catch = [1,2,3] # list
 v[catch] # numpy array
+
+##################
+# NumPy'da Koşullu İşlemler ( Conditions on NumPy ) - Yapılması gereken şey ilgili array'in içerisine koşul ifadesi girmektir.
+##################
+
+import numpy as np
+v = np.array([1,2,3,4,5])
+
+#3'ten küçük değerlere erişmek istiyorsak;
+
+# klasik çözüm
+
+ab = []
+
+# for i in v:
+#   print(i)
+
+for i in v:
+    if i < 3:
+        ab.append(i)
+
+# NumPy çözümü
+
+v < 3
+
+v[v < 3]
+v[v > 3]
+v[v == 3]
+v[v != 3]
+v[v >= 3]
 
