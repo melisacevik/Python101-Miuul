@@ -674,3 +674,12 @@ isim_soyisim.sort(key=lambda x: x.split(' ')[-1].lower())
 print(isim_soyisim)
 # name = "Melisa Cevik".split()[-1].lower()
 # print(name)
+
+# Filter
+
+number_list = [10,9,3,4,5,1,2,3,8,7]
+new_list = list(filter(lambda x:(x % 2 == 0) ,number_list))
+print(new_list)
+
+# filter 2 parametre ile çalışır. 1.function 2.iteration list. function => lambda
+# list ile sarmalıyoruz
