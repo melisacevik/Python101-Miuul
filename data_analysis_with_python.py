@@ -96,3 +96,53 @@ ar.reshape(3,3)
 #ihtiyaçlara göre daha az sayıda veya daha fazla sayıda satır ya da sütun bilgisi girerek boyut değiştirme işlemleri yapılır.
 
 #ama, 10 elemanlı olsaydı 3,3'e çeviremezdik. hata verir.
+
+##################
+# Index Seçimi - Index Selection
+##################
+
+import numpy as np
+
+a = np.random.randint(10, size=10) #randint metodu kullanarak 0'dan 10'a kadar sayılardan oluşan 10 adet değer oluşturuldu.
+
+# Örneğin, 0.elemanına gitmek için:
+
+a[0]
+a[0:5]
+
+# 0. indexteki elemanı değiştirmek istersem
+
+a[0] = 999
+
+
+# 2 boyutlu arraylerde seçme işlemi nasıl olur?
+
+                    # (3 satır,5 sütun)
+m = np.random.randint(10,size=(3,5))
+
+#ilk eleman için
+
+#satır,sütun / 0'ın 0'ı
+m[0, 0]
+
+m[1, 1]
+
+# elemanı değiştirmek istersem
+
+m[0, 4] = 5
+
+m[1, 3] = 999
+
+#float girersen onu int olarak yazar cünkü ndarray tek veri yapısı ile tutar.
+
+# bütün satırların 0. elemanını almak istersem
+
+m[:, 0]
+
+# 1.satırın bütün sütunlarını seçmek istersek
+
+m[1, :]
+
+# hem satırlardan belli bir aralık hem sütunlardan belli bir aralık verebilir miyiz?
+
+m[0:2, 0:3]
