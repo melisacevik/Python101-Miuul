@@ -645,7 +645,7 @@ df[num_cols].head()
 df[num_cols].agg(new_dict)
 
 ##########
-# Recursive Fonksiyonlar : Çalışma esnasından tekrar kendini çağıran fonksiyonlara denir.
+# Proto : Recursive Fonksiyonlar : Çalışma esnasından tekrar kendini çağıran fonksiyonlara denir.
 ##########
 
 def factorial(x):
@@ -656,3 +656,21 @@ def factorial(x):
 
 result = factorial(4)
 print(result)
+
+##########
+# Proto : Lambda : İsimsiz fonksiyonlardır.
+# Bir fonksiyonlara parametre olarak gönderirken kullanıyoruz. Filter, map gibi.
+##########
+
+denklem = lambda x: x * 2
+sonuc = denklem(2)
+print(sonuc)
+
+# soyisminin ilk harfine göre sıralama yapsın.
+
+isim_soyisim = ['Melisa Cevik', "Cagri Sabanci", "Portakal Qabanci", "Citos Rabanci"]
+isim_soyisim.sort(key=lambda x: x.split(' ')[-1].lower())
+
+print(isim_soyisim)
+# name = "Melisa Cevik".split()[-1].lower()
+# print(name)
