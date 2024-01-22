@@ -13,28 +13,30 @@ a = "Hello World"
 type(a)
 b = True
 type(b)
-c = 23 < 22
+c = 23 < 22 #false
 type(c)
-l = [1,2,3,4]
+l = [1, 2, 3, 4]
 type(l)
 d = {"Name": "Jake",
      "Age": 27,
      "Adress": "Downtown"}
 type(d)
 
-t = ("Machine Learning","Data Science")
+t = ("Machine Learning", "Data Science")
 type(t)
 
-s = {"Python" , "Machine Learning" , "Data Science"}
-type(s)
+s = {"Python", "Machine Learning", "Data Science"}
+type(s) #sırasız, unique
+# s[1] error
 
 ####################
-# Görev 2) Verilen string ifadenin tüm harflerini büyük harfe çeviriniz. Virgül ve nokta yerine space koyunuz, kelime kelime ayırınız.
+# Görev 2) Verilen string ifadenin tüm harflerini büyük harfe çeviriniz.
+# Virgül ve nokta yerine space koyunuz, kelime kelime ayırınız.
 ####################
 
 text = "The goal is to turn data into information, and information into insight."
 
-text.upper().replace(","," ").replace("."," ").split()
+new_text = text.upper().replace(","," ").replace("."," ").split()
 
 ####################
 # Görev 3) Verilen listeye aşağıdaki adımları uygulayınız
@@ -51,11 +53,13 @@ lst[10]
 
 #Adım 3: Verilen liste üzerinden "D","A","T","A" listesi oluşturunuz.
 
-data_list = lst[0:4]
+data_list = lst[0:4] #0,1,2,3
+# data_list = lst[0:3]
 
 #Adım 4: 8.indexteki elemanı siliniz.
 
 lst.remove(lst[8])
+#lst.pop(8)
 
 #Adım 5: Yeni bir eleman ekleyiniz.
 lst.append("M")
@@ -79,8 +83,10 @@ dict.keys()
 dict.values()
 #Adım 3: Daisy key'ine ait 12 değerini 13 olarak güncelle.
 dict["Daisy"][1] = 13
+#dict['Daisy'] = ['England', 13]
 #Adım 4: Key değeri = Ahmet , Value = ["Turkey", 24] olan yeni bir değer ekleyiniz.
 dict["Ahmet"] = ["Turkey",24]
+#update ile de olur.
 #Adım 5: Antonio'yu listeden siliniz.
 dict.pop("Antonio")
 
@@ -116,8 +122,8 @@ students = ["Ali","Veli","Ayşe","Talat","Zeynep", "Ece"]
 
 def divide_students(students):
 
-    eng_students = students[0:3]
-    medic_students = students[3:6]
+    eng_students = students[0:3] #0,1,2
+    medic_students = students[3:6] #3,4,5
 
     for index, student in enumerate(eng_students,1):
         print("Mühendislik Fakültesi " + str(index) + ". öğrenci : " + student)
@@ -127,31 +133,38 @@ def divide_students(students):
 
 divide_students(students)
 
+
 ####################
 # Görev 7 : Aşağıda 3 adet liste verilmiştir. Listelerde sırası ile bir dersin kodu, kredisi
 # ve kontenjan bilgileri yer almaktadır. Zip kullanarak ders bilgilerini bastırınız.
 ####################
 
-ders_kodu = ["CMP1005", "PSY1001", "HUK1005", "SEN2204"]
-kredi = [3, 4, 2, 4]
-kontenjan = [30, 75, 150, 25]
+ders_kodu = ["CMP1005","PSY1001","HUK1005","SEN2204"]
+kredi = [3,4,2,4]
+kontenjan = [30,75,150,25]
 
-list(zip(ders_kodu, kredi, kontenjan))
+dersler =list(zip(ders_kodu,kredi,kontenjan))
+print(dersler)
+for i, ders in enumerate(dersler):
+    print("Kredisi",dersler[i][1],"olan",dersler[i][0], "kodlu dersin kontenjanı",dersler[i][2],"kişidir.")
+
+# [print("Kredisi {} olan {} kodlu dersin kontenjanı {} kişidir.".format(a,b,c)) for a,b,c in zip(kredi,ders_kodu,kontenjan)]
 
 ####################
-# Görev 8: Aşağıda 2 adet set verilmiştir. Sizden istenilen eğer 1.küme 2.kümeyi kapsıyor ise ortak elemanlarını,
-# kapsamıyor ise 2.kümenin 1.kümeden farkını yazdıracak fonksiyonu tanımlamanız beklenmektedir.
+# Görev 8: Aşağıda 2 adet set verilmiştir. Sizden istenilen eğer
+# 1.küme 2.kümeyi kapsıyor ise ortak elemanlarını,
+# kapsamıyor ise 2.kümenin 1.kümeden farkını yazdıracak
+# fonksiyonu tanımlamanız beklenmektedir.
 ####################
 
 kume1 = set(["data","python"])
 kume2 = set(["data","function","qcut","lambda","python","miuul"])
 
 def kume(kume1,kume2):
-    if (kume1.issuperset(kume2)):
-        print("ortak elemanlar:" , kume1.intersection(kume2))
+    if kume1.issuperset(kume2):
+        print("ortak elemanlar:", kume1.intersection(kume2))
     else:
-        print("küme farkı: " , kume2.difference(kume1))
-
+        print("küme farkı: ", kume2.difference(kume1))
 
 kume(kume1,kume2)
 

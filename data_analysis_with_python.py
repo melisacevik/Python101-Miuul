@@ -230,3 +230,21 @@ a = np.array([[5,1] , [1,3]])
 b = np.array([12,10])
 
 np.linalg.solve(a,b)
+
+
+# quiz
+import numpy as np
+arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+print('1. boyuttaki 2.eleman: ', arr[0, 1])
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7])
+print(arr[-3:-1])
+
+import numpy as np
+array = np.array([1, 2, 3, 4, 5, 6, 7])
+
+filter_array = array % 2 == 0
+
+new_array = array[filter_array]
+
+print(new_array)
