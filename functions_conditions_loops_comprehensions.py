@@ -385,7 +385,25 @@ list(zip(players,teams,heights))
 # Lambda & Map & Filter & Reduce
 #################
 
-#
+# Proto : Lambda : İsimsiz fonksiyonlardır.
+# Bir fonksiyonlara parametre olarak gönderirken kullanıyoruz. Filter, map gibi.
+
+denklem = lambda x: x * 2
+sonuc = denklem(2)
+print(sonuc)
+
+# soyisminin ilk harfine göre sıralama yapsın.
+
+isim_soyisim = ['Melisa Cevik', "Cagri Sabanci", "Portakal Qabanci", "Citos Rabanci"]
+isim_soyisim.sort(key=lambda x: x.split(' ')[-1].lower())
+
+print(isim_soyisim)
+# name = "Melisa Cevik".split()[-1].lower()
+# print(name)
+
+##--------
+
+#Miuul
 #Lambda => fonksiyon tanımlama şeklidir. atama yapılmaksızın kullanılabilir.
 #
 
@@ -428,6 +446,15 @@ list(map(lambda x: x * 20 / 100 + x, salaries)) #en kısa yol
 list_store = [1,2,3,4,5,6,7,8,9] #çift varsa filtreleyip listeleyeceğiz.
 
 list(filter(lambda x: x % 2 == 0, list_store))
+
+# Filter : Prototürk
+
+number_list = [10,9,3,4,5,1,2,3,8,7]
+new_list = list(filter(lambda x:(x % 2 == 0) ,number_list))
+print(new_list)
+
+# filter 2 parametre ile çalışır. 1.function 2.iteration list. function => lambda
+# geriye obje döndürdüğü için list ile sarmalıyoruz
 
 ############
 # Reduce : İndirgemek
@@ -657,29 +684,11 @@ def factorial(x):
 result = factorial(4)
 print(result)
 
-##########
-# Proto : Lambda : İsimsiz fonksiyonlardır.
-# Bir fonksiyonlara parametre olarak gönderirken kullanıyoruz. Filter, map gibi.
-##########
 
-denklem = lambda x: x * 2
-sonuc = denklem(2)
-print(sonuc)
+# Map : filter fonksiyonu ile benzer fakat map ile listenin içindeki elemanlara müdahale edebiliyoruz.
 
-# soyisminin ilk harfine göre sıralama yapsın.
+liste = [10,8,7,5,3,2]
 
-isim_soyisim = ['Melisa Cevik', "Cagri Sabanci", "Portakal Qabanci", "Citos Rabanci"]
-isim_soyisim.sort(key=lambda x: x.split(' ')[-1].lower())
+yeni_liste = list(map(lambda x: x *2, liste))
 
-print(isim_soyisim)
-# name = "Melisa Cevik".split()[-1].lower()
-# print(name)
-
-# Filter
-
-number_list = [10,9,3,4,5,1,2,3,8,7]
-new_list = list(filter(lambda x:(x % 2 == 0) ,number_list))
-print(new_list)
-
-# filter 2 parametre ile çalışır. 1.function 2.iteration list. function => lambda
-# list ile sarmalıyoruz
+print(yeni_liste)
