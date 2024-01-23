@@ -1,4 +1,4 @@
-# Data Science Bootcamp | Python 101
+# Miuul | Data Science Bootcamp | Python 101
 
 Bu repo, Python programlama dilini öğrenmek isteyenler için hazırlanan Data Science Bootcamp'in bir parçasıdır. Aşağıda
 yer alan konulara ait kodları ilgili Python dosyalarından erişebilirsiniz:
