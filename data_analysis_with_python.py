@@ -278,4 +278,15 @@ s.values # değerlerin kendilerine erişmek istersek
 type(s.values)
 s.head()  # ilk 5 örneği getirme
 s.head(3)
-s.tail()   # sondan 5 örneği getirme 
+s.tail()   # sondan 5 örneği getirme
+
+###########
+# Veri Okuma (Reading Data)
+###########
+
+import pandas as pd
+
+df = pd.read_csv("datasets/advertising.csv")
+df.head()
+
+#pandas cheatseet
