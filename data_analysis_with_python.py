@@ -248,3 +248,34 @@ filter_array = array % 2 == 0
 new_array = array[filter_array]
 
 print(new_array)
+
+##########################
+# Pandas
+#########################
+# - Konu Başlıkları -
+
+# Pandas Series
+# Veri Okuma (Reading Data)
+# Veriye Hızlı Bakış (Quick Look at Data)
+# Pandas’ta Seçim İşlemleri (Selection in Pandas)
+# Toplulaştırma ve Gruplama (Aggregation & Grouping )
+# Apply ve Lambda
+# Birleştirme (Join) İşlemleri
+
+###########
+# Pandas Series
+###########
+
+import pandas as pd
+
+s = pd.Series([10,77,12,4,5])
+type(s)
+s.index #0'dan 5' kadar 1'er artacak şekilde indexi vardır.
+s.dtype # verinin tip bilgisi
+s.size  # eleman sayısı
+s.ndim  # boyut bilgisi
+s.values # değerlerin kendilerine erişmek istersek
+type(s.values)
+s.head()  # ilk 5 örneği getirme
+s.head(3)
+s.tail()   # sondan 5 örneği getirme 
