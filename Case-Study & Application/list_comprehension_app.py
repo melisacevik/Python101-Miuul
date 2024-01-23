@@ -5,10 +5,15 @@
 #################
 
 import seaborn as sns
+
 df = sns.load_dataset("car_crashes")
 df.columns
 
 ["NUM_" + col.upper() if df[col].dtype != 'O' else col.upper() for col in df.columns]
+
+from pandas.api.types import is_numeric_dtype
+
+[f"NUM_{col.upper()}" if is_numeric_dtype(df[col]) else col.upper() for col in df.columns]
 
 #################
 # Görev 2) List Comprehensions yapısı kullanarak car_crashers
@@ -17,6 +22,7 @@ df.columns
 #################
 
 import seaborn as sns
+
 df = sns.load_dataset("car_crashes")
 
 df.columns = [col.upper() + "_FLAG" if 'no' not in df[col] else col.upper() for col in df.columns]
@@ -31,19 +37,23 @@ df.columns = [col.upper() if 'no' in col else col.upper() + '_FLAG' for col in d
 #################
 
 import seaborn as sns
+
 df = sns.load_dataset("car_crashes")
+
 # "abbrev", "no_previous" olmayanları
 
+og_list = ["abbrev", "no_previous"]
+new_cols = [col for col in df.columns if col not in og_list]
+
+# 2. çözüm
+
 new_cols = [col for col in df.columns if "abbrev" not in col and "no_previous" not in col]
-
 new_df = df[new_cols]
-
 new_df.head()
 
-#2. çözüm
-og_list = ["abbrev","no_previous"]
+# 3. çözüm
+og_list = ["abbrev", "no_previous"]
 
 new_cols = [col for col in df.columns if col not in og_list]
 print(new_cols)
 new_df = df[new_cols]
-
