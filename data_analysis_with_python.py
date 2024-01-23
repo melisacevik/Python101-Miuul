@@ -290,3 +290,22 @@ df = pd.read_csv("datasets/advertising.csv")
 df.head()
 
 #pandas cheatseet
+
+###########
+# Veriye Hızlı Bakış (Quick Look at Data)
+###########
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset("titanic")
+df.head()
+df.shape
+df.info()
+df.columns
+df.index
+df.describe().T # özel istatistiklerine erişmek için , T => transpose'unu almak icin  => adet, ortalama,std, min
+df.isnull().values.any() #Detaylarına girmeden sadece veri setinde en az bir tane dahi olsa bir eksiklik var mı?
+df.isnull().sum() # her değişkende kaç tane eksik değer olduğu bilgisi
+df["sex"].head()
+df["sex"].value_counts() #kaç kadın kaç erkek
