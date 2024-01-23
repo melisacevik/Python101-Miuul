@@ -8,5 +8,5 @@ yer alan konulara ait kodları ilgili Python dosyalarından erişebilirsiniz:
 - **Fonksiyonlar, Koşullar, Döngüler, ve Kapsamlar** ☞ [functions_conditions_loops_comprehensions.py](functions_conditions_loops_comprehensions.py)
 - **NumPy & Pandas ile Veri Analizi** ☞ [data_analysis_with_python.py](data_analysis_with_python.py)
 
-Ayrıca, bu konulara ait örnek çözümleri ilgili paket içerisinden bulabilirsiniz. Veri setlerine ise 'datasets'
-paketinden ulaşabilirsiniz.
+Ayrıca, bu konulara ait örnek çözümleri ilgili paket içerisinden bulabilirsiniz. 
+Veri setlerine ise 'datasets' paketinden ulaşabilirsiniz.
