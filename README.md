@@ -3,7 +3,7 @@
 Bu repo, Python programlama dilini öğrenmek isteyenler için hazırlanan Data Science Bootcamp'in bir parçasıdır. Aşağıda
 yer alan konulara ait kodları ilgili Python dosyalarından erişebilirsiniz:
 
-- **Çalışma Ortamı Ayarları** => [setting_up_working_environment.py](setting_up_working_environment.py)
+- **Çalışma Ortamı Ayarları** ☞ [setting_up_working_environment.py](setting_up_working_environment.py)
 - **Veri Yapıları** => [data_structures.py](data_structures.py)
 - **Fonksiyonlar, Koşullar, Döngüler, ve Kapsamlar** => [functions_conditions_loops_comprehensions.py](functions_conditions_loops_comprehensions.py)
 - **Koşullar** => [functions_conditions_loops_comprehensions.py](functions_conditions_loops_comprehensions.py)
