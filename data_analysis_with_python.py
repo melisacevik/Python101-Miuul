@@ -425,3 +425,30 @@ df.loc[:, df.columns.str.contains("age")].head()
 df.loc[:, ~df.columns.str.contains("age")].head()
 # ~ => bunun dışındakileri seç (tilde), age ile ilgili bütün değişkenleri sildik. burada seçme kolaylığı sağlayan: ~
 # loc, dataframe'lerde seçme işlemleri için kullanılan bir diğer özel yapıdır.
+
+###################
+# Loc & Iloc
+###################
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)  # çıktıdaki 3 noktadan kurtulmak için
+df = sns.load_dataset("titanic")
+df.head()
+
+# iloc: integer based selection 'e kadar!
+df.iloc[0:3]
+df.iloc[0, 0]
+
+# loc: label based selection : :'den sonraki kısımda dahil olur
+
+df.loc[0:3]
+
+# 0'dan 3'e kadar olacak şekilde sütunlardan da bir değişken seçmek istersem,
+# satır ya da indexlerdeki değerlerin bizzat kendilerine göre seçim yapak istersem => loc kullanıyoruz.
+
+df.loc[0:3, "age"]
+
+col_names = ["age", "embarked", "alive"]
+df.loc[0:3, col_names]
