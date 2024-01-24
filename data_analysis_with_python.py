@@ -366,3 +366,62 @@ df.drop("age", axis=1, inplace=True)
 # reset_index() fonksiyonu kullanılacak.
 
 df = df.reset_index().head()
+
+###################
+# Değişkenler Üzerinde İşlemler
+###################
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)  # çıktıdaki 3 noktadan kurtulmak için
+df = sns.load_dataset("titanic")
+df.head()
+
+"age" in df  # bu değişken bu veri setinin içinde var mı
+
+df["age"].head()  # değişken seçme
+
+type(df["age"].head())  # bunun tipi Pandas serisi
+
+# Bir değişken seçerken sonucu seri ya da dataframe olarak alabiliriz. İki köşeli parantez girmemiz durumunda veri yapısı bozulmaz ve df olmaya devam eder.
+
+type(df[["age"]].head())  # bunun tipi Pandas dataframe
+
+# Bir df'in içerisinden birden fazla değişken seçmek istersem;
+
+df[["age", "alive"]]
+
+# Daha fazla değişken varsa da aynı işlem
+
+col_names = ["age", "adult_male", "alive"]
+
+df[col_names]  # col_names zaten listeyi temsil ediyor ve [] 'i var.
+
+# Dataframe e bir değişken ekleme işlemi
+df["age2"] = df["age"] ** 2
+df["age3"] = df["age"] / df["age2"]
+
+# Değişken Silme
+
+# age3 sütununu sil
+df.drop("age3", axis=1).head()
+
+# birden fazla değişkeni silmek için
+
+col_names = ["age", "adult_male", "alive"]
+
+df.drop(col_names, axis=1).head()
+
+# Veri setinde belirli bir string ifadeyi barındıran değişkenleri silmek istersem;
+# içinde age barındıran 1000 tane değişken olabilir. Bunları nasıl programatik, otomatik olarak seçeceğiz?
+df.loc[:, df.columns.str.contains("age")].head()
+
+# loc, label based seçim yapmak için kullanılır.
+# :, => bütün satırları seç,
+# contains => stringlere uygulanan bir metottur, kendinden önceki stringde var mı kontrol eder.
+
+# age içeren kolonların hepsini silmek silmek istersem ne yapmalıyım ?
+df.loc[:, ~df.columns.str.contains("age")].head()
+# ~ => bunun dışındakileri seç (tilde), age ile ilgili bütün değişkenleri sildik. burada seçme kolaylığı sağlayan: ~
+# loc, dataframe'lerde seçme işlemleri için kullanılan bir diğer özel yapıdır.
