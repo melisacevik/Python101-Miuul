@@ -313,3 +313,56 @@ df.isnull().values.any()  # Detaylarına girmeden sadece veri setinde en az bir 
 df.isnull().sum()  # her değişkende kaç tane eksik değer olduğu bilgisi
 df["sex"].head()
 df["sex"].value_counts()  # kaç kadın kaç erkek
+
+###########
+# Pandas'ta Seçim İşlemleri (Selection in Pandas)
+###########
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset("titanic")
+df.head()
+
+df.index
+df[0:3]
+df.drop(0, axis=0).head()  # (hangi index silinecek, axis=0 => satırlardan silme),ilk 5i gör
+
+# birden fazla index silme için,
+delete_indexes = [1, 3, 5, 7]
+df.drop(delete_indexes, axis=0).head()
+
+# işlemin kalıcı olması için şunlar yapılır;
+# df = df.drop(delete_indexes, axis=0)
+# df.drop(delete_indexes, axis=0,inplacce=True)
+
+###########################
+# Değişkeni Indexe Çevirmek
+###########################
+
+# değişken seçimi için ikisi de olur,
+df["age"].head()
+df.age.head()
+
+# değişkeni indexe çevirme
+df.index = df["age"]
+
+# biz bunu indexe çevirdik, değişken olarak ihtiyacımız olmadığını düşünürsek nasıl sileriz?
+df.drop("age", axis=1, inplace=True)
+
+###########################
+# Indexi Değişkene Çevirmek
+###########################
+
+df.index  # bunu df'e atarsak, bunu değişken olarak eklemiş oluruz.
+
+df["age"] = df.index
+
+df.head()
+
+# 2. yol
+# tekrar oluşturulan değişkeni sil
+df.drop("age", axis=1, inplace=True)
+# reset_index() fonksiyonu kullanılacak.
+
+df = df.reset_index().head()
