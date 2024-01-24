@@ -592,3 +592,69 @@ df.pivot_table("survived", "sex", ["new_age", "class"])
 import pandas as pd
 
 pd.set_option('display.width', 500)  # yandaki / gitsin yan yana görüntüleyeyim.
+
+###############################
+# Apply ve Lambda
+###############################
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
+df = sns.load_dataset("titanic")
+df.head()
+
+df["age2"] = df["age"] * 2
+df["age3"] = df["age"] * 5
+
+# Amacımız ne? Bu veri seti içerisindeki age değişkenlerinin 10'a bölünmesini istiyoruz.
+
+# klasik çözüm
+(df["age"] / 10).head()
+(df["age2"] / 10).head()
+(df["age3"] / 10).head()
+
+for col in df.columns:
+    if "age" in col:
+        print((df[col] / 10).head())
+
+for col in df.columns:
+    if "age" in col:
+        df[col] = df[col] / 10
+
+df.head()
+
+# apply ve lambda ile çözümü!
+
+df[["age", "age2", "age3"]].apply(lambda x: x / 10).head()
+
+df.loc[:, df.columns.str.contains("age")].apply(lambda x: x / 10).head()
+
+# bir döngü yazmadan apply() fonksiyonu değişkenlerde gezme imkanı sağladı. Değişkenleri gezerken bir fonksiyon tanımladık.
+
+# bir fonksiyon yazacağız ve bu fonksiyon dataframe'deki değerleri standartlaştırsın. ( standartlaştırma/normalleştirme fonk.)
+# Bütün gözlem birimlerinden ilgili değişkenin ortalamasını çıkartacak ve standart sapmasına bölecek.
+
+# içinde age olanları seçecek                            # ( yaş - yaş ortalaması) / yaş * standart sapma
+df.loc[:, df.columns.str.contains("age")].apply(lambda x: (x - x.mean()) / x.std()).head()
+
+
+# dışarda bu stand. fonksiyonunu da bu şekilde de kullanabilirdik;
+
+def standart_scaler(col_name):
+    return (col_name - col_name.mean()) / col_name.std()
+
+
+df.loc[:, df.columns.str.contains("age")].apply(standart_scaler).head()
+
+# bu işlemleri bu değişkenlerde kalıcı olarak tutmak istersem, kaydetmek istersem. KAYDET!
+
+df.loc[:, ["age", "age2", "age3"]] = df.loc[:, df.columns.str.contains("age")].apply(standart_scaler)
+df.head()
+
+# age , age2, age 3 yazmak istemiyorsam,
+
+# istediğin yeri seç                      =   # seçtikten sonra ,                     buraya bir işlem uyguladım ve sol tarafa kaydediyorum.
+df.loc[:, df.columns.str.contains("age")] = df.loc[:, df.columns.str.contains("age")].apply(standart_scaler)
+df.head()
