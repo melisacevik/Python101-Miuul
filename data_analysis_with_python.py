@@ -560,3 +560,35 @@ df.groupby(["sex", "embark_town", "class"]).agg({
     "survived": "mean",
     "sex": "count"
 })
+
+###################
+# Pivot Table
+##################
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)
+df = sns.load_dataset("titanic")
+df.head()
+
+# yaş ve gemiye binme lokasyonunu ifade eden bu iki değişken açısından bir pivot tablo oluşturacağız. ve bunların kesişiminde survived değişkeni bilgisine erişmek istiyoruz.
+
+df.pivot_table("survived", "sex", "embarked")  # ilk argüman kesişimlerde neyi görmek istersek onu yazarız.
+
+df.pivot_table("survived", "sex", "embarked", aggfunc="std")  # standart sapmayı almak istersek
+
+df.pivot_table("survived", "sex", ["embarked", "class"])
+
+# hem cinsiyet kırılımı, lokasyon hem de yaşlara göre de kırılım istiyorum. age => numeric ama?
+# bunu yapmanın yolu yaş değişkenini kategorik değişkene çevirmektir.
+
+
+df["new_age"] = pd.cut(df["age"],
+                       [0, 10, 18, 25, 40, 90])  # neyi böleceğim, nerelerden böleceğim? => [0, 10, 18, 25, 40, 90]
+
+df.pivot_table("survived", "sex", ["new_age", "class"])
+
+import pandas as pd
+
+pd.set_option('display.width', 500)  # yandaki / gitsin yan yana görüntüleyeyim.
