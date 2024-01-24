@@ -36,13 +36,16 @@ type(s)  # sırasız, unique
 
 text = "The goal is to turn data into information, and information into insight."
 
+# 1. çözüm
 new_text = text.upper().replace(",", " ").replace(".", " ").split()
 
-# regEx ile de çözülür.
+# 2.çözüm regEx ile de çözülür.
+
 import re
 
 text = text.upper()
 list_of_words = re.sub(r"[.,]", " ", text.upper()).split()
+
 ####################
 # Görev 3) Verilen listeye aşağıdaki adımları uygulayınız
 ####################
@@ -63,9 +66,8 @@ data_list = lst[0:4]  # 0,1,2,3
 
 # Adım 4: 8.indexteki elemanı siliniz.
 
-lst.remove(lst[8])
-# lst.pop(8)
-
+# lst.remove(lst[8])
+lst.pop(8)
 # del lst[8]
 
 # Adım 5: Yeni bir eleman ekleyiniz.
@@ -102,6 +104,8 @@ dict.pop("Antonio")
 # Görev 5 : Argüman olarak bir liste alan, listenin içerisindeki tek ve çift sayıları ayrı listelere atayan ve bu listeleri return eden fonksiyon yazınız
 ####################
 
+# 1. çözüm
+
 def my_list(input_list):
     even_list = []
     odd_list = []
@@ -117,6 +121,8 @@ def my_list(input_list):
 even_list, odd_list = my_list([2, 13, 18, 93, 22])
 print("Even List: ", even_list)
 print("Odd List:", odd_list)
+
+# 2. çözüm
 
 l = [2, 13, 18, 93, 22]
 
@@ -154,6 +160,7 @@ students[0:3]
 students[:3]
 students[3:]
 
+
 def divide_students(students):
     eng_students = students[:3]  # 0,1,2
     medic_students = students[3:6]  # 3,4,5
@@ -186,10 +193,11 @@ kontenjan = [30, 75, 150, 25]
 
 dersler = list(zip(ders_kodu, kredi, kontenjan))
 print(dersler)
+
 for i, ders in enumerate(dersler):
     print("Kredisi", dersler[i][1], "olan", dersler[i][0], "kodlu dersin kontenjanı", dersler[i][2], "kişidir.")
 
- [print("Kredisi {} olan {} kodlu dersin kontenjanı {} kişidir.".format(a,b,c)) for a,b,c in zip(kredi,ders_kodu,kontenjan)]
+# [print("Kredisi {} olan {} kodlu dersin kontenjanı {} kişidir.".format(a,b,c)) for a,b,c in zip(kredi,ders_kodu,kontenjan)]
 
 ####################
 # Görev 8: Aşağıda 2 adet set verilmiştir. Sizden istenilen eğer
@@ -207,5 +215,6 @@ def kume(kume1, kume2):
         print("ortak elemanlar:", kume1.intersection(kume2))
     else:
         print("küme farkı: ", kume2.difference(kume1))
+
 
 kume(kume1, kume2)

@@ -32,7 +32,7 @@ import numpy as np
 a = [1, 2, 3, 4]
 b = [2, 3, 4, 5]
 
-#klasik yöntem
+# klasik yöntem
 ab = []
 for i in range(0, len(a)):
     ab.append(a[i] * b[i])
@@ -50,13 +50,13 @@ a * b
 import numpy as np
 
 np.array([1, 2, 3, 4, 5])
-type(np.array([1, 2, 3, 4, 5])) # class 'numpy.ndarray'
+type(np.array([1, 2, 3, 4, 5]))  # class 'numpy.ndarray'
 
-
-np.zeros(10, dtype=int) #(adet,veri yapısı) | # 0 'dan oluşan ndarray oluşturmak istersem;
-np.random.randint(0, 10, size=10) #(başlangıç aralık,bitiş aralık, adet) integer => randint() | # belirli bir aralık olacak şekilde;
+np.zeros(10, dtype=int)  # (adet,veri yapısı) | # 0 'dan oluşan ndarray oluşturmak istersem;
+np.random.randint(0, 10,
+                  size=10)  # (başlangıç aralık,bitiş aralık, adet) integer => randint() | # belirli bir aralık olacak şekilde;
 # belirli bir istatiksel dağılıma göre sayı üretmek istersek normal() kullanırız
-np.random.normal(10, 4,(3,4)) #(normaldağılımlıkitleortalaması, argüman=> ör stand sapm = 4 , boyut)
+np.random.normal(10, 4, (3, 4))  # (normaldağılımlıkitleortalaması, argüman=> ör stand sapm = 4 , boyut)
 # 3 satır 4 sütundan oluşan ortalaması 10 standart sapması 4 olacak şekilde normal dağılımlı sayılar oluşturuldu.
 
 
@@ -73,9 +73,9 @@ import numpy as np
 
 a = np.random.randint(10, size=5)
 
-a.ndim #tek boyutlu [] olduğu icin 1 | kaç boyutlu? 1 mi 2 mi 3 mü
-a.shape #tek boyutlu ve içinde 5 eleman var | boyut bilgisi ver
-a.size # toplam eleman sayısı
+a.ndim  # tek boyutlu [] olduğu icin 1 | kaç boyutlu? 1 mi 2 mi 3 mü
+a.shape  # tek boyutlu ve içinde 5 eleman var | boyut bilgisi ver
+a.size  # toplam eleman sayısı
 a.dtype
 
 ##################
@@ -86,16 +86,17 @@ a.dtype
 # örneğin , 3'e 3'lük matris oluşturmak istersek,
 
 import numpy as np
+
 np.random.randint(1, 10, size=9)
-np.random.randint(1, 10, size=9).reshape(3,3)
+np.random.randint(1, 10, size=9).reshape(3, 3)
 
-#veya
+# veya
 ar = np.random.randint(1, 10, size=9)
-ar.reshape(3,3)
-#atayarak da olur.
-#ihtiyaçlara göre daha az sayıda veya daha fazla sayıda satır ya da sütun bilgisi girerek boyut değiştirme işlemleri yapılır.
+ar.reshape(3, 3)
+# atayarak da olur.
+# ihtiyaçlara göre daha az sayıda veya daha fazla sayıda satır ya da sütun bilgisi girerek boyut değiştirme işlemleri yapılır.
 
-#ama, 10 elemanlı olsaydı 3,3'e çeviremezdik. hata verir.
+# ama, 10 elemanlı olsaydı 3,3'e çeviremezdik. hata verir.
 
 ##################
 # Index Seçimi - Index Selection
@@ -103,7 +104,8 @@ ar.reshape(3,3)
 
 import numpy as np
 
-a = np.random.randint(10, size=10) #randint metodu kullanarak 0'dan 10'a kadar sayılardan oluşan 10 adet değer oluşturuldu.
+a = np.random.randint(10,
+                      size=10)  # randint metodu kullanarak 0'dan 10'a kadar sayılardan oluşan 10 adet değer oluşturuldu.
 
 # Örneğin, 0.elemanına gitmek için:
 
@@ -114,15 +116,14 @@ a[0:5]
 
 a[0] = 999
 
-
 # 2 boyutlu arraylerde seçme işlemi nasıl olur?
 
-                    # (3 satır,5 sütun)
-m = np.random.randint(10,size=(3,5))
+# (3 satır,5 sütun)
+m = np.random.randint(10, size=(3, 5))
 
-#ilk eleman için
+# ilk eleman için
 
-#satır,sütun / 0'ın 0'ı
+# satır,sütun / 0'ın 0'ı
 m[0, 0]
 
 m[1, 1]
@@ -133,7 +134,7 @@ m[0, 4] = 5
 
 m[1, 3] = 999
 
-#float girersen onu int olarak yazar cünkü ndarray tek veri yapısı ile tutar.
+# float girersen onu int olarak yazar cünkü ndarray tek veri yapısı ile tutar.
 
 # bütün satırların 0. elemanını almak istersem
 
@@ -153,24 +154,25 @@ m[0:2, 0:3]
 
 import numpy as np
 
-            #0'dan 30'a kadar 3'er artacak şekilde array oluşturma
+# 0'dan 30'a kadar 3'er artacak şekilde array oluşturma
 v = np.arange(0, 30, 3)
 v[1]
 
 # diyelim ki elimde birden fazla index bilgisi var. tek tek [0] , [5] gibi yazmaktan kolay olmalı.
-#fancy index ne işe yarar? numpy arrayine bir liste girdiğinizde seçim işlemi sağlar.
+# fancy index ne işe yarar? numpy arrayine bir liste girdiğinizde seçim işlemi sağlar.
 
-catch = [1,2,3] # list
-v[catch] # numpy array
+catch = [1, 2, 3]  # list
+v[catch]  # numpy array
 
 ##################
 # NumPy'da Koşullu İşlemler ( Conditions on NumPy ) - Yapılması gereken şey ilgili array'in içerisine koşul ifadesi girmektir.
 ##################
 
 import numpy as np
-v = np.array([1,2,3,4,5])
 
-#3'ten küçük değerlere erişmek istiyorsak;
+v = np.array([1, 2, 3, 4, 5])
+
+# 3'ten küçük değerlere erişmek istiyorsak;
 
 # klasik çözüm
 
@@ -198,23 +200,24 @@ v[v >= 3]
 ##################
 
 import numpy as np
-v = np.array([1,2,3,4,5])
+
+v = np.array([1, 2, 3, 4, 5])
 
 v / 5
-v * 5 /10
+v * 5 / 10
 v ** 2
 v - 1
 v + 1
 
-#metodlar ile de yapabiliriz;
+# metodlar ile de yapabiliriz;
 
 np.subtract(v, 1)
 np.add(v, 1)
-np.mean(v) #ortalama
+np.mean(v)  # ortalama
 np.sum(v)
 np.min(v)
 np.max(v)
-np.var(v) #varyans
+np.var(v)  # varyans
 
 # atamadık consoleda gözlemliyoruz. kalıcı olmasını istersen v 'ye tekrar atarsın.
 
@@ -224,23 +227,24 @@ np.var(v) #varyans
 # x0 + 3*x1 = 10
 
 
-             # x0'ın katsayıları , x1 'in katsayıları
-a = np.array([[5,1] , [1,3]])
-            # sonuc ayrı bi array'de
-b = np.array([12,10])
+# x0'ın katsayıları , x1 'in katsayıları
+a = np.array([[5, 1], [1, 3]])
+# sonuc ayrı bi array'de
+b = np.array([12, 10])
 
-np.linalg.solve(a,b)
-
+np.linalg.solve(a, b)
 
 # quiz
 import numpy as np
-arr = np.array([[1,2,3,4,5], [6,7,8,9,10]])
+
+arr = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
 print('1. boyuttaki 2.eleman: ', arr[0, 1])
 
 arr = np.array([1, 2, 3, 4, 5, 6, 7])
 print(arr[-3:-1])
 
 import numpy as np
+
 array = np.array([1, 2, 3, 4, 5, 6, 7])
 
 filter_array = array % 2 == 0
@@ -268,17 +272,17 @@ print(new_array)
 
 import pandas as pd
 
-s = pd.Series([10,77,12,4,5])
+s = pd.Series([10, 77, 12, 4, 5])
 type(s)
-s.index #0'dan 5' kadar 1'er artacak şekilde indexi vardır.
-s.dtype # verinin tip bilgisi
+s.index  # 0'dan 5' kadar 1'er artacak şekilde indexi vardır.
+s.dtype  # verinin tip bilgisi
 s.size  # eleman sayısı
 s.ndim  # boyut bilgisi
-s.values # değerlerin kendilerine erişmek istersek
+s.values  # değerlerin kendilerine erişmek istersek
 type(s.values)
 s.head()  # ilk 5 örneği getirme
 s.head(3)
-s.tail()   # sondan 5 örneği getirme
+s.tail()  # sondan 5 örneği getirme
 
 ###########
 # Veri Okuma (Reading Data)
@@ -289,7 +293,7 @@ import pandas as pd
 df = pd.read_csv("datasets/advertising.csv")
 df.head()
 
-#pandas cheatseet
+# pandas cheatseet
 
 ###########
 # Veriye Hızlı Bakış (Quick Look at Data)
@@ -304,8 +308,61 @@ df.shape
 df.info()
 df.columns
 df.index
-df.describe().T # özel istatistiklerine erişmek için , T => transpose'unu almak icin  => adet, ortalama,std, min
-df.isnull().values.any() #Detaylarına girmeden sadece veri setinde en az bir tane dahi olsa bir eksiklik var mı?
-df.isnull().sum() # her değişkende kaç tane eksik değer olduğu bilgisi
+df.describe().T  # özel istatistiklerine erişmek için , T => transpose'unu almak icin  => adet, ortalama,std, min
+df.isnull().values.any()  # Detaylarına girmeden sadece veri setinde en az bir tane dahi olsa bir eksiklik var mı?
+df.isnull().sum()  # her değişkende kaç tane eksik değer olduğu bilgisi
 df["sex"].head()
-df["sex"].value_counts() #kaç kadın kaç erkek
+df["sex"].value_counts()  # kaç kadın kaç erkek
+
+###########
+# Pandas'ta Seçim İşlemleri (Selection in Pandas)
+###########
+
+import pandas as pd
+import seaborn as sns
+
+df = sns.load_dataset("titanic")
+df.head()
+
+df.index
+df[0:3]
+df.drop(0, axis=0).head()  # (hangi index silinecek, axis=0 => satırlardan silme),ilk 5i gör
+
+# birden fazla index silme için,
+delete_indexes = [1, 3, 5, 7]
+df.drop(delete_indexes, axis=0).head()
+
+# işlemin kalıcı olması için şunlar yapılır;
+# df = df.drop(delete_indexes, axis=0)
+# df.drop(delete_indexes, axis=0,inplacce=True)
+
+###########################
+# Değişkeni Indexe Çevirmek
+###########################
+
+# değişken seçimi için ikisi de olur,
+df["age"].head()
+df.age.head()
+
+# değişkeni indexe çevirme
+df.index = df["age"]
+
+# biz bunu indexe çevirdik, değişken olarak ihtiyacımız olmadığını düşünürsek nasıl sileriz?
+df.drop("age", axis=1, inplace=True)
+
+###########################
+# Indexi Değişkene Çevirmek
+###########################
+
+df.index  # bunu df'e atarsak, bunu değişken olarak eklemiş oluruz.
+
+df["age"] = df.index
+
+df.head()
+
+# 2. yol
+# tekrar oluşturulan değişkeni sil
+df.drop("age", axis=1, inplace=True)
+# reset_index() fonksiyonu kullanılacak.
+
+df = df.reset_index().head()
