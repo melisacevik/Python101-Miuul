@@ -452,3 +452,111 @@ df.loc[0:3, "age"]
 
 col_names = ["age", "embarked", "alive"]
 df.loc[0:3, col_names]
+
+# Koşullu Seçim
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)
+df = sns.load_dataset("titanic")
+df.head()
+
+# yaşı 50'den büyük olanlara erişmek istiyorum
+
+df[df["age"] > 50].head()
+
+# yaşı 50'den büyük kaç kişi var dersem
+# değişken seçmem lazım ki bütün kolonlara count atmasın
+df[df["age"] > 50]["age"].count()
+
+# yaşı 50'den büyük olan kişilerin class bilgisini(yolculuk sınıfı) merak ediyoruz
+
+df.loc[df["age"] > 50, "class"].head()
+
+# yaşı da gelsin
+
+df.loc[df["age"] > 50, ["age", "class"]].head()
+
+# yaşı 50'den büyük olan ve cinsiyeti erkek olanlara gitmek istiyorum
+# aynı anda 2 koşul 2 değişken
+df.loc[(df["age"] > 50) & (df["sex"] == "male"), ["age", "class"]].head()
+
+# embark_town = "Cherbourg" olanı da seçelim ( 3 koşul olacak )
+df.loc[(df["age"] > 50)
+       & (df["sex"] == "male")
+       & (df["embark_town"] == "Cherbourg"),
+["age", "class", "embark_town"]].head()
+
+# başka mantıksal operatörleri kullanarak seçim yapabilir miyiz?
+# embark_town = "Cherbourg" veya "Southampton" olanı seç
+
+df_new = df.loc[(df["age"] > 50)
+                & (df["sex"] == "male")
+                & ((df["embark_town"] == "Cherbourg") | (df["embark_town"] == "Southampton")),
+["age", "class", "embark_town"]]
+
+# bir değişkenin değerlerinin toplamı ( group by )
+
+df_new["embark_town"].value_counts()
+
+###############################
+# Toplulaştırma & Gruplama ( Aggregation & Grouping )
+###############################
+
+# - count()
+# - first()
+# - last()
+# - mean()
+# - median()
+# - min()
+# - max()
+# - std()
+# - var()
+# - sum()
+# - pivot table
+
+import pandas as pd
+import seaborn as sns
+
+pd.set_option('display.max_columns', None)
+df = sns.load_dataset("titanic")
+df.head()
+
+# kadınların ve erkeklerin yaş ortalamasına erişmek istiyorum
+# cinsiyete göre yaş ortalaması nedir ? bunu öğrenmeye çalışıyorum
+
+df["age"].mean()
+
+# cinsiyete göre gruplayıp yaş ortalaması alma
+df.groupby("sex")["age"].mean()
+
+# toplamını da almak istersek
+
+df.groupby("sex").agg({"age": "mean"})  # ikisi de aynı sonucu veriyor ama bu daha önemli bir kullanım!
+
+# cinsiyete göre gruplayıp yaşın ortalamasını ve yaşın toplamını almak için bu kullanım
+df.groupby("sex").agg({"age": ["mean", "sum"]})
+
+# Cinsiye göre kırdıktan sonra survived değişkenine göre bilgileri almak için
+# 0 ise hayatta kalamamayı, 1 hayatta kalmayı ifade ediyor
+
+df.groupby("sex").agg({"age": ["mean", "sum"],
+                       "survived": "mean"})
+
+# bu gemiye binen kadınların %74'ü hayatta kalmış
+# erkeklerin %18'i hayatta kalmış
+
+# önce cinsiyte göre kıralım, limana binişe göre kıralım, sonra age ve survived değerlerinin ortalamasını alalım.
+
+df.groupby(["sex", "embark_town"]).agg({"age": ["mean"],
+                                        "survived": "mean"})
+
+df.groupby(["sex", "embark_town", "class"]).agg({"age": ["mean"],
+                                                 "survived": "mean"})
+
+df.groupby(["sex", "embark_town", "class"]).agg({
+    "age": ["mean"],
+    "survived": "mean",
+    "sex": "count"
+})
