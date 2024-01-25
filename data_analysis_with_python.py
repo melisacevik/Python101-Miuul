@@ -658,3 +658,52 @@ df.head()
 # istediğin yeri seç                      =   # seçtikten sonra ,                     buraya bir işlem uyguladım ve sol tarafa kaydediyorum.
 df.loc[:, df.columns.str.contains("age")] = df.loc[:, df.columns.str.contains("age")].apply(standart_scaler)
 df.head()
+
+###############################
+# Birleştirme (Join) İşlemleri
+###############################
+
+import numpy as np
+import pandas as pd
+
+m = np.random.randint(1, 30, size=(5, 3))  # 1 ile 30 arasında 5'e 3'lük numpy array'i oluşturduk.
+df1 = pd.DataFrame(m, columns=["var1", "var2", "var3"])
+# pd.DataFrame => sıfırdan dataframe oluşturmadır.
+# 1.argüman => veri yapısı ( sözlük, list, numpy array)
+# 2. argümana => değişkenlerin isimlerini gir
+
+df2 = df1 + 99
+
+# iki dataframeleri alt alta birleştirmek istersek,
+
+##
+# Concat ile
+##
+pd.concat([df1, df2])
+
+# burada index bilgileri 0 1 2 3 4 0 1 2 3 4 diye gitmiş doğru değil. Nasıl düzeltiriz?
+# indexlerin sıfırlanıp baştan başlaması lazım.
+
+pd.concat([df1, df2], ignore_index=True)
+
+##
+# Merge ile
+##
+
+df1 = pd.DataFrame({'employees': ['john', 'dennis', 'mark', 'maria'],
+                    'group': ['accounting', 'engineering', 'engineering', 'hr']})
+
+df2 = pd.DataFrame({'employees': ['john', 'dennis', 'mark', 'maria'],
+                    'start_date': [2010, 2009, 2014, 2019]})
+
+pd.merge(df1, df2)  # direkt employees'e göre birleştirme işlemi yaptı. fakat özellikle belirtmek istersek,
+pd.merge(df1, df2, on="employees")
+
+# Amaç her çalışanın müdür bilgisine erişmek istiyoruz.
+
+df3 = pd.merge(df1, df2)
+
+df4 = pd.DataFrame({'group': ['accounting', 'engineering', 'hr'],
+                    'manager': ['Melisa', 'çitosportakal', 'çağrı']})
+
+pd.merge(df3, df4, on="group")
