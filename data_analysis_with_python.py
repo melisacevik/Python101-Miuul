@@ -707,3 +707,29 @@ df4 = pd.DataFrame({'group': ['accounting', 'engineering', 'hr'],
                     'manager': ['Melisa', 'çitosportakal', 'çağrı']})
 
 pd.merge(df3, df4, on="group")
+
+##########################
+# VERİ GÖRSELLEŞTİRME: MATPLOTLIB & SEABORN
+##########################
+
+# Kategorik değişken : sütun grafik countplot bar
+# Sayısal değişken : hist, boxplot
+
+##########################
+# Kategorik Degisken Görsellestirme
+##########################
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
+df = sns.load_dataset("titanic")
+df.head()
+
+df['sex'].value_counts().plot(kind='bar')
+# value_counts : ilgili kategorik değişkeni betimler
+# kind = bar ( sütun ) bilgisi
+# grafiği plt.show() ile ekrana basarız.
+plt.show()
