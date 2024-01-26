@@ -752,3 +752,38 @@ plt.show()
 
 plt.boxplot(df["fare"])
 plt.show()
+
+##########################
+# Matplotlib'in Özellikleri
+##########################
+
+import pandas as pd
+import seaborn as sns
+import numpy as np
+import matplotlib.pyplot as plt
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
+df = sns.load_dataset("titanic")
+df.head()
+
+##########################
+# plot
+##########################
+
+x = np.array([1, 18])
+y = np.arange([0, 150])
+
+plt.plot(x, y)
+plt.show()
+
+plt.plot(x, y, 'o')
+plt.show()
+
+x = np.array([2, 4, 6, 8, 10])
+y = np.array([1, 3, 5, 7, 9])
+plt.plot(x, y)
+plt.show()
+
+plt.plot(x, y, 'o')
+plt.show()
