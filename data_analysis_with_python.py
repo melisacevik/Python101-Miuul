@@ -768,7 +768,7 @@ df = sns.load_dataset("titanic")
 df.head()
 
 ##########################
-# plot
+# plot : görselleştirme
 ##########################
 
 x = np.array([1, 18])
@@ -799,3 +799,18 @@ plt.xticks(np.arange(1, 18, 1))
 plt.yticks(np.arange(0, 170, 10))  # işaretlerini ayarlıyoruz.
 
 plt.show()
+
+##########################
+# marker : işaretleyici/ işaret özellikleri
+##########################
+
+y = np.array([13, 28, 11, 100])
+# y noktalarına içi dolu daire koymak yani bir marker ile işaretlemek istiyoruz.
+
+plt.plot(y, marker='o')
+plt.show()
+
+plt.plot(y, marker="P")
+plt.show()
+
+# https://matplotlib.org/stable/api/markers_api.html
