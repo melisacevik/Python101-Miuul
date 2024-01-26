@@ -814,3 +814,62 @@ plt.plot(y, marker="P")
 plt.show()
 
 # https://matplotlib.org/stable/api/markers_api.html
+
+#####################
+# line :
+#####################
+
+y = np.array([13, 28, 11, 100])
+plt.plot(y, linestyle="dashed", color='r')
+plt.show()
+
+#####################
+# Multiple Lines
+#####################
+
+x = np.array([23, 18, 31, 10])
+y = np.array([13, 28, 11, 100])
+
+plt.plot(x)
+plt.plot(y)
+plt.show()
+
+#####################
+# Labels
+#####################
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+plt.plot(x, y)
+
+# Başlık
+plt.title("Bu ana başlık")
+
+# X eksenini isimlendirme
+plt.xlabel("X ekseni isimlendirmesi")
+plt.ylabel("Y ekseni isimlendirmesi")
+
+plt.grid()  # okunabilirliği artsın diye
+plt.show()
+
+#####################
+# Subplots : Bu tür bir kullanımın amacı genellikle iki veya daha fazla grafik arasında karşılaştırma yapmak,
+# ilişkiyi incelemek veya farklı veri setlerini aynı anda görselleştirmektir.
+# farklı perspektiflerden bakmak için kullanışlıdır.
+#####################
+
+# plot 1
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+plt.subplot(1, 2, 1)  # 1 satırlık,2 sütunluk grafik oluşturucam, bunun 1.grafiği
+plt.title("1")
+plt.plot(x, y)
+
+# plot 2
+
+x = np.array([8, 8, 9, 9, 10, 11, 11, 12, 13, 14])
+y = np.array([24, 20, 26, 270, 280, 29, 30, 30, 30, 30])
+plt.subplot(1, 2, 2)  # 1 satırlık,2 sütunluk grafik oluşturucam, bunun 2.grafiği
+plt.title("2")
+plt.plot(x, y)
