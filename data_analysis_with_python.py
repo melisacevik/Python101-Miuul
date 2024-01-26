@@ -1010,6 +1010,7 @@ def cat_summary(dataframe, col_name):
     # çıktının düzgün bir formda olmasını istediğim için data frame e koyduk
     print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
                         "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}))
+
     print("###################")
 
 
@@ -1017,3 +1018,31 @@ cat_summary(df, "sex")  # hepsine uygulamak istersem,
 
 for col in cat_cols:
     cat_summary(df, col)
+
+
+def cat_summary(dataframe, col_name, plot=False):
+    # çıktının düzgün bir formda olmasını istediğim için data frame e koyduk
+    print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
+                        "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}))
+
+    print("###################")
+
+    if plot:
+        sns.countplot(x=dataframe[col_name], data=dataframe)
+        plt.show(block=True)
+
+
+cat_summary(df, "sex", plot=True)
+
+for col in cat_cols:
+    cat_summary(df, col, plot=True)
+
+# bizde bool görünüyor ama çözümde bool değerler grafikte görünmüyor  => adult_male değişkeni
+# bool değil de fonk. kabul edeceği tipe çeviriyor
+# df["adult_male"].astype(int)  # her sütun için yapacak olursam
+# for col in cat_cols:
+#    if df[col].dtypes == "bool":
+#        df[col] = df[col].astype(int)
+#        cat_summary(df, col, plot=True)
+#   else:
+#        cat_summary(df, col, plot=True)
