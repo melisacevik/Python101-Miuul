@@ -907,3 +907,61 @@ plt.show()
 
 df["total_bill"].hist()  # pandas fonksiyonu
 plt.show()
+
+######################
+# GELİŞMİŞ FONKSİYONEL KEŞİFÇİ VERİ ANALİZİ (ADVANCED FUNCTIONAL EDA)
+######################
+
+# 1. Genel Resim
+# 2. Kategorik Değişken Analizi (Analysis of Categorical Variables)
+# 3. Sayısal Değişken Analizi ( Analysis of Numerical Variables)
+# 4. Hedef Değişken Analizi (Analysis of Target Variable)
+# 5. Korelasyon Analizi (Analysis of Correlation)
+
+######################
+# 1 Genel Resim
+######################
+
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
+df = sns.load_dataset("titanic")
+df.head()
+df.tail()  #
+df.shape  # output : ( satır, sütun ) yani ( gözlem birimi, değişken)
+df.info()
+df.columns
+df.index
+df.describe().T  # sayısal değişkenleri betimleme /count/mean/std/min/.../max
+df.isnull().values.any()  # hızlı bir şekilde eksik değer var mı yok mu
+df.isnull().sum()  # veri setindeki bütün değişkenlerdeki eksik değer sayısını veren fonksiyon
+
+
+# elimize veri ilk defa bir veri geldiğinde check_df fonks. kullanarak hızlı bir şekilde bu veriyle
+# ilgili bilgi edinebiliriz. Neden check_df?
+# değişiklik yapıldığında tekrar kontrol etmek istediğimizde check isimlendirilmesi daha uygun.
+def check_df(dataframe, head=5):
+    print("######################## Shape ############################")
+    print(dataframe.shape)
+    print("######################## Types ############################")
+    print(dataframe.dtypes)
+    print("######################## Head #############################")
+    print(dataframe.head(head))
+    print("######################## Tail #############################")
+    print(dataframe.tail(head))
+    print("######################## NA ###############################")
+    print(dataframe.isnull().sum())
+    print("####################### Quantiles #########################")
+    # Sayısal değişkenlerin dağılım bilgisi
+    print(dataframe.describe([0, 0.05, 0.50, 0.95, 0.99, 1]).T)
+
+
+check_df(df)
+
+# yeni bir veri seti okutucam ve bunun üzerinde fonk. denemek istiyorum?
+df = sns.load_dataset("tips")
+check_df(df)
