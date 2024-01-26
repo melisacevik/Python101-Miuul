@@ -941,7 +941,7 @@ df.isnull().values.any()  # hızlı bir şekilde eksik değer var mı yok mu
 df.isnull().sum()  # veri setindeki bütün değişkenlerdeki eksik değer sayısını veren fonksiyon
 
 
-# elimize veri ilk defa bir veri geldiğinde check_df fonks. kullanarak hızlı bir şekilde bu veriyle
+# elimize ilk defa bir veri geldiğinde check_df fonks. kullanarak hızlı bir şekilde bu veriyle
 # ilgili bilgi edinebiliriz. Neden check_df?
 # değişiklik yapıldığında tekrar kontrol etmek istediğimizde check isimlendirilmesi daha uygun.
 def check_df(dataframe, head=5):
@@ -965,3 +965,55 @@ check_df(df)
 # yeni bir veri seti okutucam ve bunun üzerinde fonk. denemek istiyorum?
 df = sns.load_dataset("tips")
 check_df(df)
+
+######################
+# 2. Kategorik Değişken Analizi (Analysis of Categorical Variables)
+######################
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
+df = sns.load_dataset("titanic")
+df.head()
+
+df["embarked"].value_counts()  # tek değişken
+df["sex"].unique()  # değişkenin benzersiz gözlemlerini getirir. distinct gibi çalısır
+df["sex"].nunique()  # toplamda kaç benzersiz değer var?
+
+# bu veri seti içerisinden otomatik olarak bütün kategorik değişkenleri seçsin.
+
+cat_cols = [col for col in df.columns if str(df[col].dtypes) in ["category", "object", "bool"]]
+
+num_but_cat = [col for col in df.columns if df[col].nunique() < 10 and df[col].dtypes in ["int", "float"]]
+
+cat_but_car = [col for col in df.columns if df[col].nunique() > 20 and str(df[col].dtypes) in ["category", "object"]]
+
+cat_cols = cat_cols + num_but_cat
+
+# cat_but_car boş küme olmasaydı,
+
+cat_cols = [col for col in cat_cols if col not in cat_but_car]
+
+df[cat_cols].nunique()
+
+[col for col in df.columns if col not in cat_cols]
+
+
+# fonksiyon yazalım
+# bu fonksiyon kendisine girilen değerlerin hangi sınıftan kaçar tane bilgisini => df["embarked"].value_counts() alsın
+# sınıfların yüzdelik bilgisini yazdıralım. 100 * df["embarked"].value_counts() / len(df)
+
+def cat_summary(dataframe, col_name):
+    # çıktının düzgün bir formda olmasını istediğim için data frame e koyduk
+    print(pd.DataFrame({col_name: dataframe[col_name].value_counts(),
+                        "Ratio": 100 * dataframe[col_name].value_counts() / len(dataframe)}))
+    print("###################")
+
+
+cat_summary(df, "sex")  # hepsine uygulamak istersem,
+
+for col in cat_cols:
+    cat_summary(df, col)
