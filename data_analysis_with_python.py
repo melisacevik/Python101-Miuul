@@ -873,3 +873,37 @@ y = np.array([24, 20, 26, 270, 280, 29, 30, 30, 30, 30])
 plt.subplot(1, 2, 2)  # 1 satırlık,2 sütunluk grafik oluşturucam, bunun 2.grafiği
 plt.title("2")
 plt.plot(x, y)
+
+###################
+# Seaborn
+# 3 temel yaklaşım var;
+# 1) value_counts() ve countplot()
+# 2) Histogram(hist())
+# 3) boxplot()
+###################
+
+import pandas as pd
+import seaborn as sns
+from matplotlib import pyplot as plt
+
+df = sns.load_dataset("tips")
+df.head()
+
+# kategorik : cinsiyet(kadın-erkek) / smoke(no/yes) => sütun grafik
+
+df["sex"].value_counts()
+sns.countplot(x=df["sex"], data=df)  # seaborn
+plt.show()
+
+df['sex'].value_counts().plot(kind='bar')  # matplotlib
+plt.show()
+
+#######################
+# Sayısal Değişken Görselleştirme
+#######################
+
+sns.boxplot(x=df["total_bill"])
+plt.show()
+
+df["total_bill"].hist()  # pandas fonksiyonu
+plt.show()
