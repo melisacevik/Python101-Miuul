@@ -7,6 +7,7 @@ yer alan konulara ait kodları ilgili Python dosyalarından erişebilirsiniz:
 - **Veri Yapıları** ☞ [data_structures.py](data_structures.py)
 - **Fonksiyonlar, Koşullar, Döngüler, ve Kapsamlar** ☞ [functions_conditions_loops_comprehensions.py](functions_conditions_loops_comprehensions.py)
 - **NumPy & Pandas ile Veri Analizi** ☞ [data_analysis_with_python.py](data_analysis_with_python.py)
+- **Matplotlib & Seaborn ile Veri Görselleştirme** ☞ [data_analysis_with_python.py](data_analysis_with_python.py)
 
 Ayrıca, bu konulara ait örnek çözümlerine Case & Study paketinden ulaşabilirsiniz.
 Veri setlerine ise 'datasets' paketinden ulaşabilirsiniz.
