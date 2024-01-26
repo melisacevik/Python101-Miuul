@@ -787,3 +787,15 @@ plt.show()
 
 plt.plot(x, y, 'o')
 plt.show()
+
+# kişisel soru : x eksenini 1-1 y eksenini 10-10 arttırmak isteseydik ?
+
+x_data = np.arange(1, 18, 1)
+y_data = np.arange(0, 170, 10)  # önce bunu tanımlıyoruz.
+
+plt.plot(x_data, y_data)  # veriyi çiziyoruz.
+
+plt.xticks(np.arange(1, 18, 1))
+plt.yticks(np.arange(0, 170, 10))  # işaretlerini ayarlıyoruz.
+
+plt.show()
